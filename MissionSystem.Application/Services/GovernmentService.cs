@@ -34,7 +34,7 @@ namespace MissionSystem.Application.Services
 
         public async Task<Government> GetGovernmentByIdAsync(Guid id)
         {
-            return await _repository.GetById(a => a.Id == id);
+            return await _repository.GetByIdAsync(a => a.Id == id);
         }
         public async Task<ResponseDto> SeedGovernmentAsync()
         {

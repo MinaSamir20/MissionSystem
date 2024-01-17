@@ -56,7 +56,7 @@ namespace MissionSystem.Infrastructure.Generic
             return await query.ToListAsync();
         }
 
-        public async Task<T> GetById(Expression<Func<T, bool>> criteria, string[]? includes = null)
+        public async Task<T> GetByIdAsync(Expression<Func<T, bool>> criteria, string[]? includes = null)
         {
             IQueryable<T> query = _app.Set<T>().Where(a => a.IsDeleted == false);
             if (includes != null)
@@ -85,7 +85,7 @@ namespace MissionSystem.Infrastructure.Generic
             return entity!;
         }
 
-        public async Task<ICollection<T>> GetByIdsAsync(ICollection<Guid> Ids)
+        public async Task<ICollection<T>> GetByIdAsync(ICollection<Guid> Ids)
         {
             return await _app.Set<T>().Where(m => Ids.Contains(m.Id)).ToListAsync();
         }

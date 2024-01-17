@@ -30,7 +30,7 @@ namespace MissionSystem.Infrastructure.Repositories.AuthenticationRepository
             throw new NotImplementedException();
         }
 
-        public Task<User> GetById(Expression<Func<User, bool>> criteria, string[]? includes = null)
+        public Task<User> GetByIdAsync(Expression<Func<User, bool>> criteria, string[]? includes = null)
         {
             throw new NotImplementedException();
         }
@@ -45,7 +45,7 @@ namespace MissionSystem.Infrastructure.Repositories.AuthenticationRepository
             throw new NotImplementedException();
         }
 
-        public Task<ICollection<User>> GetByIdsAsync(ICollection<Guid> Ids)
+        public Task<ICollection<User>> GetByIdAsync(ICollection<Guid> Ids)
         {
             throw new NotImplementedException();
         }

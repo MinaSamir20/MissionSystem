@@ -29,10 +29,10 @@ namespace MissionSystem.Application.Features.Coordinators.Commands.Handler
         {
             var Coordinator = _mapper.Map<Coordinator>(request);
 
-            var address = await _addressRepository.GetById(a => a.Id == request.AddressId);
+            var address = await _addressRepository.GetByIdAsync(a => a.Id == request.AddressId);
             if (address != null)
                 Coordinator.Address = address;
-            var user = await _repository.GetById(a => a.UserId == request.UserId);
+            var user = await _repository.GetByIdAsync(a => a.UserId == request.UserId);
             
             // Add School To Coordinator
             var school = await _schoolRepository.GetSchoolsByIdsAsync(request.SchoolIds!);
@@ -40,7 +40,7 @@ namespace MissionSystem.Application.Features.Coordinators.Commands.Handler
                 return "Invalid School";
             foreach (var item in request.SchoolIds!)
             {
-                var existingSchoolIds = await _schoolRepository.GetById(a => a.Id == item);
+                var existingSchoolIds = await _schoolRepository.GetByIdAsync(a => a.Id == item);
                 if (existingSchoolIds != null)
                     return "This School is Exist";
             }

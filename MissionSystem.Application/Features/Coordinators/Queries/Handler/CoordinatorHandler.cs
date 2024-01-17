@@ -42,7 +42,7 @@ namespace MissionSystem.Application.Features.Coordinators.Queries.Handler
 
         public async Task<GetCoordinatorListResponse> Handle(GetCoordinatorDetailQuery request, CancellationToken cancellationToken)
         {
-            var coordinator = await _coordinatorRepository.GetById(a => a.Id == request.CoordinatorId);
+            var coordinator = await _coordinatorRepository.GetByIdAsync(a => a.Id == request.CoordinatorId);
             return _mapper.Map<GetCoordinatorListResponse>(coordinator);
         }
     }

@@ -34,13 +34,13 @@ namespace MissionSystem.Application.Features.Schools.Queries.Handler
             foreach (var item in school)
             {
                 item.ImageUrl = Helper.Image(GetHostUrl().ToString(), "School", item.ImageUrl!);
-                item.Coordinator = await _cooRepository.GetById(a => a.Id == item.CoordinatorId, new[] { "User" });
+                item.Coordinator = await _cooRepository.GetByIdAsync(a => a.Id == item.CoordinatorId, new[] { "User" });
             }
             return _mapper.Map<IEnumerable<GetSchoolListResponse>>(school);
         }
         public async Task<GetSchoolListResponse> Handle(GetSchoolDetailQuery request, CancellationToken cancellationToken)
         {
-            var school = await _schoolRepository.GetById(a => a.Id == request.SchoolId);
+            var school = await _schoolRepository.GetByIdAsync(a => a.Id == request.SchoolId);
             return _mapper.Map<GetSchoolListResponse>(school);
         }
     }

@@ -18,7 +18,7 @@ namespace MissionSystem.WebApi.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllMissions")]
+        [HttpGet("AllMissions")]
         public async Task<IActionResult> GetAllMissions(Guid? CoordinatorId = null)
         {   
             var result = await _mediator.Send(new GetMissionListQuery(CoordinatorId));
@@ -27,7 +27,7 @@ namespace MissionSystem.WebApi.Controllers
         }
 
 
-        [HttpGet("GetMissionById")]
+        [HttpGet("MissionById")]
         public async Task<IActionResult> GetMissionById(GetMissionDetailQuery query)
         {
             var result = await _mediator.Send(query);

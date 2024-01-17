@@ -28,7 +28,7 @@ namespace MissionSystem.Application.Features.Missions.Queries.Handler
         }
         public async Task<GetMissionListResponse> Handle(GetMissionDetailQuery request, CancellationToken cancellationToken)
         {
-            var mission = await _missionRepository.GetById(a => a.Id == request.MissionId);
+            var mission = await _missionRepository.GetByIdAsync(a => a.Id == request.MissionId);
             return _mapper.Map<GetMissionListResponse>(mission);
         }
 

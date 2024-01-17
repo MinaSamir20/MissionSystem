@@ -26,7 +26,7 @@ namespace MissionSystem.Application.Features.Categories.Queries.Handler
 
         public async Task<GetCategoryListResponse> Handle(GetCategoryDetailQuery request, CancellationToken cancellationToken)
         {
-            var category = await _categoryRepository.GetById(a => a.Id == request.CategoryId);
+            var category = await _categoryRepository.GetByIdAsync(a => a.Id == request.CategoryId);
             return _mapper.Map<GetCategoryListResponse>(category);
         }
     }

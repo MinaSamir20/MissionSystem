@@ -26,7 +26,7 @@ namespace MissionSystem.Application.Features.Addresses.Queries.Handler
 
         public async Task<GetAddressListResponse> Handle(GetAddressDetailQuery request, CancellationToken cancellationToken)
         {
-            var address = await _genericRepository.GetById(a => a.Id == request.AddressId);
+            var address = await _genericRepository.GetByIdAsync(a => a.Id == request.AddressId);
             return _mapper.Map<GetAddressListResponse>(address);
         }
     }

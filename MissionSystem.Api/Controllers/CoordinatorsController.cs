@@ -16,7 +16,7 @@ namespace MissionSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllCoordinators")]
+        [HttpGet("AllCoordinators")]
         public async Task<IActionResult> GetAllCoordinators()
         {
             var result = await _mediator.Send(new GetCoordinatorListQuery());
@@ -24,7 +24,7 @@ namespace MissionSystem.Api.Controllers
         }
 
 
-        [HttpGet("GetCoordinatorById")]
+        [HttpGet("CoordinatorById")]
         public async Task<IActionResult> GetCoordinatorById([FromQuery] GetCoordinatorDetailQuery query)
         {
             var result = await _mediator.Send(query);
