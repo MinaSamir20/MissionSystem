@@ -42,7 +42,7 @@ namespace MissionSystem.Application.Features.Schools.Commands.Handler
             if (address != null)
                 school.Address = address;
 
-            school.ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Images/School", request.ImageUrl!);
+            school.ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Resources/Images/School", request.ImageUrl!);
             return await _genericRepository.CreateAsync(school);
         }
 

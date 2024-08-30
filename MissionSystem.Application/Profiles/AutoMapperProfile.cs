@@ -58,6 +58,7 @@ namespace MissionSystem.Application.Profiles
             // Mission
             CreateMap<Mission, MissionDto>().ReverseMap();
             CreateMap<Mission, GetMissionListResponse>().ReverseMap();
+            CreateMap<Mission, AddImageMission>().ReverseMap();
             CreateMap<Mission, CreateMissionCommand>().ReverseMap();
             CreateMap<Mission, UpdateMissionCommand>().ReverseMap();
             CreateMap<Mission, DeleteMissionCommand>().ReverseMap();

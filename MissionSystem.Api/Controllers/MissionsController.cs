@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using MissionSystem.Application.Features.Missions.Commands.Models;
 using MissionSystem.Application.Features.Missions.Queries.Models;
-using MissionSystem.Domain.Entity;
 
 namespace MissionSystem.WebApi.Controllers
 {

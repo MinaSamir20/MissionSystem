@@ -24,8 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Files\" />
-    <Folder Include="Images\" />
+    <Folder Include="Resources\Files\" />
+    <Folder Include="Resources\Images\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
 
 </Project>

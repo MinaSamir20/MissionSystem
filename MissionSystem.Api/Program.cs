@@ -10,6 +10,10 @@ using MissionSystem.Infrastructure.Database;
 using System.Text;
 using System.Text.Json.Serialization;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Http.Features;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.Extensions.FileProviders.Physical;
+using Microsoft.Extensions.FileProviders;
 
 var builder = WebApplication.CreateBuilder(args);
 
