@@ -1,10 +1,10 @@
 ﻿using FluentValidation;
+using MediatR;
 using Microsoft.Extensions.DependencyInjection;
-using System.Reflection;
 using MissionSystem.Application.Behaviors;
 using MissionSystem.Application.Services;
 using MissionSystem.Infrastructure.Services;
-using MediatR;
+using System.Reflection;
 
 namespace MissionSystem.Application
 {
@@ -14,6 +14,7 @@ namespace MissionSystem.Application
         {
             services.AddTransient<AuthService>();
             services.AddTransient<GovernmentService>();
+            services.AddTransient<FileService>();
 
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(Assembly.GetExecutingAssembly()));
 
