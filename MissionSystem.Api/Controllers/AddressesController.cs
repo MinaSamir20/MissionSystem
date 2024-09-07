@@ -18,7 +18,7 @@ namespace MissionSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllAddresses")]
+        [HttpGet("AllAddresses")]
         public async Task<IActionResult> GetAllAddresses()
         {
             var result = await _mediator.Send(new GetAddressListQuery());
@@ -26,7 +26,7 @@ namespace MissionSystem.Api.Controllers
         }
 
 
-        [HttpGet("GetAddressById")]
+        [HttpGet("AddressById")]
         public async Task<IActionResult> GetAddressById([FromQuery] GetAddressDetailQuery query)
         {
             var result = await _mediator.Send(query);

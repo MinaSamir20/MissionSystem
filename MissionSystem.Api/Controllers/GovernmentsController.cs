@@ -31,7 +31,7 @@ namespace MissionSystem.Api.Controllers
             return Ok(seedGovernment);
         }
         [Authorize]
-        [HttpGet("GetAllGovernments")]
+        [HttpGet("AllGovernments")]
         public async Task<IActionResult> GetAllGovernments()
         {
             var result = await _mediator.Send(new GetGovernmentListQuery());

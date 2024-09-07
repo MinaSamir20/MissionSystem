@@ -4,9 +4,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using MissionSystem.Application.Contracts;
 using MissionSystem.Application.Features.Missions.Commands.Models;
+using MissionSystem.Application.Services;
 using MissionSystem.Domain.Entity;
 using MissionSystem.Helpers;
 using MissionSystem.Infrastructure.Repositories.CategoryRepository;
+using System.IO;
 
 namespace MissionSystem.Application.Features.Missions.Commands.Handler
 {
@@ -17,13 +19,15 @@ namespace MissionSystem.Application.Features.Missions.Commands.Handler
         private readonly ICategoryRepository _categoryRepository;
         private readonly ICoordinatorRepository _coordinatorRepository;
         private readonly ISchoolRepository _schoolRepository;
+        private readonly FileService _fileService;
         private readonly IMapper _mapper;
-        public MissionCommandHandler(IMissionRepository missionRepository, ICategoryRepository categoryRepository, ICoordinatorRepository coordinatorRepository, ISchoolRepository schoolRepository, IMapper mapper, IWebHostEnvironment web)
+        public MissionCommandHandler(IMissionRepository missionRepository, ICategoryRepository categoryRepository, ICoordinatorRepository coordinatorRepository, ISchoolRepository schoolRepository, IMapper mapper, IWebHostEnvironment web, FileService fileService)
         {
             _missionRepository = missionRepository;
             _categoryRepository = categoryRepository;
             _coordinatorRepository = coordinatorRepository;
             _schoolRepository = schoolRepository;
+            _fileService = fileService;
             _mapper = mapper;
             _web = web;
         }
@@ -37,7 +41,7 @@ namespace MissionSystem.Application.Features.Missions.Commands.Handler
             {
                 if (request.AttachmentUrl!.Length > 3145728)
                     return "Not Allowed Size Maximum 3 MB";
-                mission.AttachmentUrl = Helper.UploadFiles(_web.ContentRootPath, "Files/ContentMission", request.AttachmentUrl!);
+                mission.AttachmentUrl = _fileService.CreateFile(request.AttachmentUrl);
             }
 
             // Add Category To Mission
@@ -51,18 +55,11 @@ namespace MissionSystem.Application.Features.Missions.Commands.Handler
             {
                 mission.ContentDetails = new List<ContentDetail>();
 
-                //foreach (var question in request.Question)
-                //{
-                //    mission.ContentDetails.Add(new ContentDetail { Question = question, Answer = request.Answer });
-                //}
-
                 for (int i = 0; i < Math.Min(request.Question.Count, request.Answer!.Count); i++)
                 {
-                    mission.ContentDetails.Add(new ContentDetail { Question = request.Question.ElementAt(i), Answer = request.Answer.ElementAt(i) });
+                    mission.ContentDetails.Add(new ContentDetail { Question = request.Question.ElementAtOrDefault(i), Answer = request.Answer.ElementAtOrDefault(i) });
                 }
             }
-
-
 
             // Add Coordinator To Mission
             if (request.CoordinatorIds != null)

@@ -16,7 +16,7 @@ namespace MissionSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllCategories")]
+        [HttpGet("AllCategories")]
         public async Task<IActionResult> GetAllCategories()
         {
             var result = await _mediator.Send(new GetCategoryListQuery());
@@ -24,7 +24,7 @@ namespace MissionSystem.Api.Controllers
         }
 
 
-        [HttpGet("GetCategoryById")]
+        [HttpGet("CategoryById")]
         public async Task<IActionResult> GetCategoryById([FromQuery] GetCategoryDetailQuery query)
         {
             var result = await _mediator.Send(query);

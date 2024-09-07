@@ -13,6 +13,11 @@ namespace MissionSystem.Domain.Entity
         public new Status Status { get; set; }
 
         /*----- Relations -----*/
+        // Mission has one Category
+        [ForeignKey(nameof(Categories))]
+        public Guid CategoryId { get; set; }
+        public Category? Categories { get; set; }
+
         // Mission has many Schools
         [ForeignKey("MissionId")]
         public ICollection<School>? Schools { get; set; }
@@ -20,11 +25,6 @@ namespace MissionSystem.Domain.Entity
         // Mission has many Contents
         [ForeignKey("MissionId")]
         public ICollection<ContentDetail>? ContentDetails { get; set; }
-
-        // Mission has one Category
-        [ForeignKey(nameof(Categories))]
-        public Guid CategoryId { get; set; }
-        public Category? Categories { get; set; }
 
         // Mission has many Coordinators
         [ForeignKey("MissionId")]

@@ -8,6 +8,7 @@ namespace MissionSystem.Domain.Entity
         public string? Description { get; set; }
 
         /*----- Relations -----*/
+
         // Category has many Missions
         [ForeignKey("CategoryId")]
         public ICollection<Mission>? Missions { get; set; }

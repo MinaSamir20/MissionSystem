@@ -108,7 +108,7 @@ namespace MissionSystem.Infrastructure.Services
                 NameAr = model.NameAr,
                 PhoneNumber = model.PhoneNumber,
                 Gender = model.Gender,
-                ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Images/User", model.ImageUrl),
+                ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Resources/Images/User", model.ImageUrl),
                 UserName = model.UserName,
                 Email = model.Email,
             };

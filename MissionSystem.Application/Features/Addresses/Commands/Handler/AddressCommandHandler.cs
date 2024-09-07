@@ -22,7 +22,7 @@ namespace MissionSystem.Application.Features.Addresses.Commands.Handler
         public async Task<string> Handle(CreateAddressCommand request, CancellationToken cancellationToken)
         {
             var address = _mapper.Map<Address>(request);
-            var government = await _government.GetById(a => a.Id == request.GovermentId);
+            var government = await _government.GetByIdAsync(a => a.Id == request.GovermentId);
             if (address != null)
                 address.Government = government;
             return await _repository.CreateAsync(address!);

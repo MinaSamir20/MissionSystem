@@ -2,14 +2,14 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
-using MissionSystem.Domain.Entity.Identity;
+using Microsoft.OpenApi.Models;
 using MissionSystem.Application;
 using MissionSystem.Application.Middleware;
+using MissionSystem.Domain.Entity.Identity;
 using MissionSystem.Infrastructure;
 using MissionSystem.Infrastructure.Database;
 using System.Text;
 using System.Text.Json.Serialization;
-using Microsoft.OpenApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 

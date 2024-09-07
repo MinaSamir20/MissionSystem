@@ -27,7 +27,7 @@ namespace MissionSystem.Application.Features.ContentDetails.Queries.Handler
 
         public async Task<GetContentListResponse> Handle(GetContentDetailQuery request, CancellationToken cancellationToken)
         {
-            var category = await _genericRepository.GetById(a => a.Id == request.ContentId);
+            var category = await _genericRepository.GetByIdAsync(a => a.Id == request.ContentId);
             return _mapper.Map<GetContentListResponse>(category);
         }
     }

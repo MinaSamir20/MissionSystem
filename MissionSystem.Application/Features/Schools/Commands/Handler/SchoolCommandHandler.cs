@@ -34,15 +34,15 @@ namespace MissionSystem.Application.Features.Schools.Commands.Handler
 
             var school = _mapper.Map<School>(request);
 
-            var coordinator = await _coordinatorRepository.GetById(a => a.Id == request.CoordinatorId);
+            var coordinator = await _coordinatorRepository.GetByIdAsync(a => a.Id == request.CoordinatorId);
             if (coordinator != null)
                 school.Coordinator = coordinator;
 
-            var address = await _addressRepository.GetById(a => a.Id == request.AddressId);
+            var address = await _addressRepository.GetByIdAsync(a => a.Id == request.AddressId);
             if (address != null)
                 school.Address = address;
 
-            school.ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Images/School", request.ImageUrl!);
+            school.ImageUrl = Helper.UploadFiles(_web.ContentRootPath, "Resources/Images/School", request.ImageUrl!);
             return await _genericRepository.CreateAsync(school);
         }
 
@@ -55,11 +55,11 @@ namespace MissionSystem.Application.Features.Schools.Commands.Handler
         {
             var school = _mapper.Map<School>(request);
 
-            var coordinator = await _coordinatorRepository.GetById(a => a.Id == request.CoordinatorId);
+            var coordinator = await _coordinatorRepository.GetByIdAsync(a => a.Id == request.CoordinatorId);
             if (coordinator != null)
                 school.Coordinator = coordinator;
 
-            var address = await _addressRepository.GetById(a => a.Id == request.AddressId);
+            var address = await _addressRepository.GetByIdAsync(a => a.Id == request.AddressId);
             if (address != null)
                 school.Address = address;
 

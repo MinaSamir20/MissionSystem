@@ -16,7 +16,7 @@ namespace MissionSystem.Api.Controllers
             _mediator = mediator;
         }
 
-        [HttpGet("GetAllSchools")]
+        [HttpGet("AllSchools")]
         public async Task<IActionResult> GetAllSchools(Guid? CoordinatorId = null)
         {
             var result = await _mediator.Send(new GetSchoolListQuery(CoordinatorId));
@@ -24,7 +24,7 @@ namespace MissionSystem.Api.Controllers
         }
 
 
-        [HttpGet("GetSchoolById")]
+        [HttpGet("SchoolById")]
         public async Task<IActionResult> GetSchoolById([FromQuery] GetSchoolDetailQuery query)
         {
             var result = await _mediator.Send(query);

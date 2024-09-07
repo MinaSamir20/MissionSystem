@@ -10,6 +10,10 @@ namespace MissionSystem.Domain.Entity
         [ForeignKey(nameof(Mission))]
         public Guid MissionId { get; set; }
         public Mission? Mission { get; set; }
+        
+        [ForeignKey(nameof(Category))]
+        public Guid CategoryId { get; set; }
+        public Category? Category { get; set; }
 
     }
 }

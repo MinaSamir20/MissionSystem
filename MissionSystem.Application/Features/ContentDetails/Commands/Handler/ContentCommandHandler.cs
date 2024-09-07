@@ -27,7 +27,7 @@ namespace MissionSystem.Application.Features.ContentDetails.Commands.Handler
             var content = _mapper.Map<ContentDetail>(request);
             if (request.MissionId != null)
             {
-                content.Mission = await _missionRepository.GetById(a => a.Id == request.MissionId);
+                content.Mission = await _missionRepository.GetByIdAsync(a => a.Id == request.MissionId);
             }
             return await _genericRepository.CreateAsync(content);
         }

@@ -20,9 +20,9 @@ namespace MissionSystem.Helpers
         {
             string filePath = root + foldername + image;
             return !File.Exists(filePath)
-                ? File.ReadAllBytes(root + "Images/noimage.jpg")
+                ? File.ReadAllBytes(root + "Resources/Images/noimage.jpg")
                 : File.ReadAllBytes(filePath);
         }
-        public static string Image(string host, string path, string image) => $"{host}/api/Images/{path}/{image}";
+        public static string Image(string host, string path, string image) => $"{host}/api/Resources/Images/{path}/{image}";
     }
 }

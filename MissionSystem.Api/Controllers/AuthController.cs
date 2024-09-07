@@ -77,7 +77,7 @@ namespace MissionSystem.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("GetAllUsers")]
+        [Route("AllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
             if (!ModelState.IsValid)
@@ -94,12 +94,13 @@ namespace MissionSystem.WebApi.Controllers
         }
 
         [HttpGet]
-        [Route("GetUserById")]
+        [Route("UserById")]
         public async Task<IActionResult> GetUserById([FromQuery] string Id)
         {
             var result = await _authService.GetUserByIdAsync(Id);
             return Ok(result);
         }
+
         [HttpPut]
         [Route("UpdateUser")]
         public async Task<IActionResult> UpdateUser([FromBody] User model)
